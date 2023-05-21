@@ -1,4 +1,4 @@
-import express from "express";
+import express, {Request, Response} from "express";
 
 const app = express();
 
@@ -6,18 +6,18 @@ app.use(express.json());  // To parse json bodies. This is a middleware
 
 //app.use(express.({extended:true})); // To parse url encoded
 
-app.get("/", (req, res)=> {
+app.get("/", (req: Request, res: Response)=> {
     return res.send("Hello world");
 })
 
-app.post("/api/data", (req, res)=>{
+app.post("/api/data", (req:Request, res:Response)=>{
     console.log(req.body);
 
     return res.sendStatus(200);
 })
 
 //Listening to all http methods
-app.all("/api/all", (req, res)=> {
+app.all("/api/all", (req:Request, res:Response)=> {
     return res.sendStatus(200);
 })
 
